@@ -8,6 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lobby.unity
   - enabled: 1
-    path: Assets/Scenes/Game1.unity
+    path: Assets/Scenes/BoxMemoryGame.unity
   - enabled: 1
     path: Assets/Scenes/Game2.unity
