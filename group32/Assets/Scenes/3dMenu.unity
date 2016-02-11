@@ -873,10 +873,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc94a507cc9c845b99cbe71cf57c235f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: Scenes/Game2
+  levelToLoad: 
   soundhover: {fileID: 8300000, guid: 5d685951ceedc4059a605a3cd7af3675, type: 3}
   soundSelection: {fileID: 8300000, guid: 32684700928e0463bb8c0779c723b7c3, type: 3}
-  QuitButton: 0
+  QuitButton: 1
 --- !u!102 &1850909914
 TextMesh:
   serializedVersion: 3
