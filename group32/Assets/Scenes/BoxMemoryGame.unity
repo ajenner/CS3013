@@ -267,7 +267,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11472754, guid: 9020109f801ce4c718d343ba6c4f645b, type: 2}
       propertyPath: width
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11472754, guid: 9020109f801ce4c718d343ba6c4f645b, type: 2}
       propertyPath: height

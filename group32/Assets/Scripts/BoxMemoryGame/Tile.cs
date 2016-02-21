@@ -18,7 +18,7 @@ public class Tile : MonoBehaviour {
 	public bool selected = false;
 	// Use this for initialization
 	void Start () {
-	
+		
 	}
 	
 	// Update is called once per frame
@@ -32,5 +32,6 @@ public class Tile : MonoBehaviour {
 
 	public void setID(int x){
 		this.id = x;
+		displayText.text = this.id.ToString ();
 	}
 }
