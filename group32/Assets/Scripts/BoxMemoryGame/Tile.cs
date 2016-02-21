@@ -5,6 +5,12 @@ public class Tile : MonoBehaviour {
 	//Tile Pair
 	Tile pair;
 
+	//Identity
+	int id;
+
+	//Content
+	GameObject content;
+
 	public TextMesh displayText;
 
 	//Gameplay bools
@@ -18,5 +24,13 @@ public class Tile : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public void setPair(Tile x){
+		this.pair = x;
+	}
+
+	public void setID(int x){
+		this.id = x;
 	}
 }
