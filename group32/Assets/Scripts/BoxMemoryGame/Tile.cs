@@ -10,8 +10,9 @@ public class Tile : MonoBehaviour {
 
 	//Content
 	GameObject content;
-
 	public TextMesh displayText;
+	public Material materialIdle;
+	public Material materialLightUp;
 
 	//Gameplay bools
 	public bool occupied = false;
@@ -34,4 +35,13 @@ public class Tile : MonoBehaviour {
 		this.id = x;
 		displayText.text = this.id.ToString ();
 	}
+
+	void OnMouseOver(){
+		gameObject.GetComponent<Renderer> ().material = materialLightUp;
+	}
+	 
+	void OnMouseExit(){
+		gameObject.GetComponent<Renderer> ().material = materialIdle;
+	}
+		
 }
