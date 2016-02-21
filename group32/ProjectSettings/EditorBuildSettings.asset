@@ -11,5 +11,5 @@ EditorBuildSettings:
     path: Assets/Scenes/BoxMemoryGame.unity
   - enabled: 1
     path: Assets/Scenes/Game2.unity
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Lobby.unity
