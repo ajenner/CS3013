@@ -19,6 +19,9 @@ public class GridGen : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		if ((width * height) % 2 != 0) {
+			throw new System.InvalidOperationException ("Could not create game. Not an even number in the grid");
+		}
 		CreateAssets ();
 		CreateTiles ();
 	}
@@ -56,6 +59,7 @@ public class GridGen : MonoBehaviour {
 		}
 		//tilesAssigned = new ArrayList ();
 
+		int idNumber = 0;
 		//Select 2 unassigned tiles
 		while (tilesUnassigned.Count != 0) {
 			//Generate first random tile
@@ -80,12 +84,16 @@ public class GridGen : MonoBehaviour {
 					grid[randomX, randomY].setPair(grid[randomX2, randomY2]);
 					grid [randomX2, randomY2].setPair (grid [randomX, randomY]);
 
+					grid [randomX2, randomY2].setID (idNumber);
+					grid [randomX, randomY].setID (idNumber);
+
 					//TODO Add in content of boxes here.
 
 					//Add them to the assigned list. Remove them from the unassinged list.
 					tilesUnassigned.Remove(tile1);
 					tilesUnassigned.Remove(tile2);
 
+					idNumber++;
 					Debug.Log ("Tile [" + randomX + "," + randomY + "] and tile [" + randomX2 + "," + randomY2 + "] are now paired"); 
 				} else {
 					//It's assigned already, move on
