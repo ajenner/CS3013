@@ -43,5 +43,9 @@ public class Tile : MonoBehaviour {
 	void OnMouseExit(){
 		gameObject.GetComponent<Renderer> ().material = materialIdle;
 	}
+
+	void OnMouseDown(){
+		Debug.Log ("Tile " + id + " has been clicked");
+	}
 		
 }
