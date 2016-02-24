@@ -15,10 +15,12 @@ public class Tile : MonoBehaviour {
 	public TextMesh displayText;
 	public Material materialIdle;
 	public Material materialLightUp;
+	public Material materialMatched;
 
 	//Gameplay bools
 	public bool occupied = false;
 	public bool selected = false;
+	public bool matched = false;
 	// Use this for initialization
 	void Start () {
 		
@@ -43,11 +45,15 @@ public class Tile : MonoBehaviour {
 	}
 
 	void OnMouseOver(){
-		gameObject.GetComponent<Renderer> ().material = materialLightUp;
+		if (!matched) {
+			gameObject.GetComponent<Renderer> ().material = materialLightUp;
+		}
 	}
 	 
 	void OnMouseExit(){
-		gameObject.GetComponent<Renderer> ().material = materialIdle;
+		if (!matched) {
+			gameObject.GetComponent<Renderer> ().material = materialIdle;
+		}
 	}
 
 	void OnMouseDown(){
@@ -57,5 +63,10 @@ public class Tile : MonoBehaviour {
 
 	public bool checkPair(Tile other){
 		return other.Equals (pair);
+	}
+
+	public void match(){
+		this.matched = true;
+		gameObject.GetComponent<Renderer> ().material = materialMatched;
 	}
 }

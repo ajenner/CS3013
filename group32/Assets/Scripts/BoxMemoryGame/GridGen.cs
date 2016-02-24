@@ -123,7 +123,13 @@ public class GridGen : MonoBehaviour {
 		} else {
 			p2Selected = tile;
 			bool isMatch = tile.checkPair (p1Selected);
-			Debug.Log ("Selected " + isMatch);
+			if (isMatch) {
+				p1Selected.match ();
+				p2Selected.match ();
+				Debug.Log ("Matched! " + isMatch);
+			} else {
+				Debug.Log ("No match! " + isMatch);
+			}
 		}
 		isFirstPlayerTurn = !isFirstPlayerTurn;
 	}
