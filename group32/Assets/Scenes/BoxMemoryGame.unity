@@ -273,6 +273,10 @@ Prefab:
       propertyPath: height
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 11472754, guid: 9020109f801ce4c718d343ba6c4f645b, type: 2}
+      propertyPath: distanceBetweenTiles
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9020109f801ce4c718d343ba6c4f645b, type: 2}
   m_IsPrefabParent: 0
@@ -554,8 +558,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1966723105}
-  m_LocalRotation: {x: 0.19638932, y: 0.2920346, z: -0.0614045, w: 0.93401104}
-  m_LocalPosition: {x: 0, y: 4.2433, z: -13.7055}
+  m_LocalRotation: {x: 0.37091258, y: 0.090332724, z: -0.03627894, w: 0.92355174}
+  m_LocalPosition: {x: 4.266883, y: 7.0707808, z: -14.125843}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
