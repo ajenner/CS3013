@@ -183,6 +183,7 @@ MonoBehaviour:
   materialMatched: {fileID: 2100000, guid: bdc3bd0accaa74621a82726c119d4cbd, type: 2}
   occupied: 0
   selected: 0
+  matched: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
