@@ -4,6 +4,8 @@ using System.Collections;
 public class GridGen : MonoBehaviour {
 	public Tile tilePrefab;
 
+	bool isFirstPlayerTurn = true;
+
 	//Difficulty vars
 	public int width = 3;
 	public int height = 4;
@@ -16,6 +18,10 @@ public class GridGen : MonoBehaviour {
 	static ArrayList assets;
 	static ArrayList usedAssets;
 	static ArrayList tilesUnassigned;
+
+	//GameControl
+	Tile p1Selected;
+	Tile p2Selected;
 
 	// Use this for initialization
 	void Start () {
@@ -43,6 +49,8 @@ public class GridGen : MonoBehaviour {
 			for (int y = 0; y < height; y++) {
 				Tile newTile = (Tile)Instantiate (tilePrefab, new Vector3 (transform.position.x + xOffSet, transform.position.y, transform.position.z + zOffSet),
 					               transform.rotation);
+				//Set tile's parent
+				newTile.setParent (this);
 				grid [x, y] = newTile;
 				zOffSet += distanceBetweenTiles;
 			}
@@ -106,5 +114,17 @@ public class GridGen : MonoBehaviour {
 			}
 				
 		}
+	}
+
+	public void notify(Tile tile){
+		Debug.Log ("Notify was called " + isFirstPlayerTurn);
+		if (isFirstPlayerTurn) {
+			p1Selected = tile;
+		} else {
+			p2Selected = tile;
+			bool isMatch = tile.checkPair (p1Selected);
+			Debug.Log ("Selected " + isMatch);
+		}
+		isFirstPlayerTurn = !isFirstPlayerTurn;
 	}
 }

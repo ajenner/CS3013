@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class Tile : MonoBehaviour {
+	//GridGen Parent
+	GridGen parent;
 	//Tile Pair
 	Tile pair;
 
@@ -36,6 +38,10 @@ public class Tile : MonoBehaviour {
 		displayText.text = this.id.ToString ();
 	}
 
+	public void setParent(GridGen parent){
+		this.parent = parent;
+	}
+
 	void OnMouseOver(){
 		gameObject.GetComponent<Renderer> ().material = materialLightUp;
 	}
@@ -45,7 +51,11 @@ public class Tile : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
+		parent.notify (this);
 		Debug.Log ("Tile " + id + " has been clicked");
 	}
-		
+
+	public bool checkPair(Tile other){
+		return other.Equals (pair);
+	}
 }
