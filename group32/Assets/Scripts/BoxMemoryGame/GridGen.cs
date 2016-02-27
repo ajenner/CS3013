@@ -28,6 +28,10 @@ public class GridGen : MonoBehaviour {
 		if ((width * height) % 2 != 0) {
 			throw new System.InvalidOperationException ("Could not create game. Not an even number in the grid");
 		}
+
+		if ((width * height) / 2 > 30) {
+			throw new System.InvalidOperationException ("Too large. Max number of cubes is 30 (6 * 5)");
+		}
 		CreateAssets ();
 		CreateTiles ();
 	}
