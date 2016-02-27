@@ -24,13 +24,14 @@ public class Tile : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		displayText.GetComponent<Renderer> ().enabled = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (this.selected) {
 			gameObject.GetComponent<Renderer> ().material = materialMatched;
+			displayText.gameObject.GetComponent<Renderer> ().enabled = true;
 		}
 	}
 
@@ -51,8 +52,12 @@ public class Tile : MonoBehaviour {
 	}
 
 	public void unSelect(){
-		gameObject.GetComponent<Renderer> ().material = materialIdle;
-		this.selected = false;
+		if (!matched) {
+			displayText.gameObject.GetComponent<Renderer> ().enabled = false;
+			this.gameObject.GetComponent<Renderer> ().material = materialIdle;
+			this.selected = false;
+
+		}
 	}
 
 
@@ -75,9 +80,11 @@ public class Tile : MonoBehaviour {
 	 * Mouse down, covers selecting of a tile
 	 */
 	void OnMouseDown(){
-		this.selected = true;
-		parent.notify (this);
 		Debug.Log ("Tile " + id + " has been clicked");
+		if (!matched || !selected) {
+			this.selected = true;
+			parent.notify (this);
+		}
 	}
 
 
@@ -95,5 +102,10 @@ public class Tile : MonoBehaviour {
 	public void match(){
 		this.matched = true;
 		gameObject.GetComponent<Renderer> ().material = materialMatched;
+		displayText.GetComponent<Renderer> ().enabled = true;
+	}
+
+	public void select(){
+		this.selected = true;
 	}
 }

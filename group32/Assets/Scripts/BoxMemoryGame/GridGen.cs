@@ -121,7 +121,7 @@ public class GridGen : MonoBehaviour {
 	}
 
 	public void notify(Tile tile){
-		Debug.Log ("Notify was called " + isFirstPlayerTurn);
+		//Debug.Log ("Notify was called " + isFirstPlayerTurn);
 		if (isFirstPlayerTurn) {
 			p1Selected = tile;
 		} else {
@@ -130,11 +130,11 @@ public class GridGen : MonoBehaviour {
 			if (isMatch) {
 				p1Selected.match ();
 				p2Selected.match ();
-				Debug.Log ("Matched! " + isMatch);
+				//Debug.Log ("Matched! " + isMatch);
 			} else {
 				p1Selected.unSelect();
 				p2Selected.unSelect();
-				Debug.Log ("No match! " + isMatch);
+				//Debug.Log ("No match! " + isMatch);
 			}
 		}
 		isFirstPlayerTurn = !isFirstPlayerTurn;
