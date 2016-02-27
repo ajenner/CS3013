@@ -132,6 +132,8 @@ public class GridGen : MonoBehaviour {
 				p2Selected.match ();
 				Debug.Log ("Matched! " + isMatch);
 			} else {
+				p1Selected.unSelect();
+				p2Selected.unSelect();
 				Debug.Log ("No match! " + isMatch);
 			}
 		}

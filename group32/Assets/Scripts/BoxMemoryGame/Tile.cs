@@ -21,6 +21,7 @@ public class Tile : MonoBehaviour {
 	public bool occupied = false;
 	public bool selected = false;
 	public bool matched = false;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -28,9 +29,14 @@ public class Tile : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (this.selected) {
+			gameObject.GetComponent<Renderer> ().material = materialMatched;
+		}
 	}
 
+	/*
+	 * Getters and Setters
+	 */
 	public void setPair(Tile x){
 		this.pair = x;
 	}
@@ -44,27 +50,48 @@ public class Tile : MonoBehaviour {
 		this.parent = parent;
 	}
 
+	public void unSelect(){
+		gameObject.GetComponent<Renderer> ().material = materialIdle;
+		this.selected = false;
+	}
+
+
+	/*
+	 * Mouse over functions. Covers highligting
+	 */
 	void OnMouseOver(){
-		if (!matched) {
+		if (!matched || !selected) {
 			gameObject.GetComponent<Renderer> ().material = materialLightUp;
 		}
 	}
 	 
 	void OnMouseExit(){
-		if (!matched) {
+		if (!matched || !selected) {
 			gameObject.GetComponent<Renderer> ().material = materialIdle;
 		}
 	}
 
+	/*
+	 * Mouse down, covers selecting of a tile
+	 */
 	void OnMouseDown(){
+		this.selected = true;
 		parent.notify (this);
 		Debug.Log ("Tile " + id + " has been clicked");
 	}
 
+
+	/*
+	 * Called once 2 tiles have been selected. Checks if a match has been made
+	 */
 	public bool checkPair(Tile other){
 		return other.Equals (pair);
 	}
 
+
+	/*
+	 * Handles the changing of colours once tile has been matched.
+	 */ 
 	public void match(){
 		this.matched = true;
 		gameObject.GetComponent<Renderer> ().material = materialMatched;
