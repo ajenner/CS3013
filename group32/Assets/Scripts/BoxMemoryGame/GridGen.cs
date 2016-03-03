@@ -126,17 +126,26 @@ public class GridGen : MonoBehaviour {
 			p1Selected = tile;
 		} else {
 			p2Selected = tile;
-			bool isMatch = tile.checkPair (p1Selected);
+			bool isMatch = p1Selected.checkPair (p2Selected);
 			if (isMatch) {
 				p1Selected.match ();
 				p2Selected.match ();
 				//Debug.Log ("Matched! " + isMatch);
 			} else {
-				p1Selected.unSelect();
-				p2Selected.unSelect();
+				StartCoroutine(unSelectAfterDelay());
 				//Debug.Log ("No match! " + isMatch);
 			}
 		}
 		isFirstPlayerTurn = !isFirstPlayerTurn;
+	}
+
+	IEnumerator unSelectAfterDelay(){
+		yield return new WaitForSeconds (0.2f);
+
+		Debug.Log ("Unselecting");
+		this.p2Selected.unSelect();
+		this.p1Selected.unSelect();
+
+		yield return null;
 	}
 }

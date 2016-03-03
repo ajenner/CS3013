@@ -30,8 +30,12 @@ public class Tile : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (this.selected) {
+			Debug.Log ("Trying to change colour of " + id);
 			gameObject.GetComponent<Renderer> ().material = materialMatched;
-			displayText.gameObject.GetComponent<Renderer> ().enabled = true;
+			displayText.GetComponent<Renderer> ().enabled = true;
+		} else if (this.matched) {
+			gameObject.GetComponent<Renderer> ().material = materialMatched;
+			displayText.GetComponent<Renderer> ().enabled = true;
 		}
 	}
 
@@ -53,10 +57,10 @@ public class Tile : MonoBehaviour {
 
 	public void unSelect(){
 		if (!matched) {
+			//Set this to true to enable easy easy mode :)
 			displayText.gameObject.GetComponent<Renderer> ().enabled = false;
 			this.gameObject.GetComponent<Renderer> ().material = materialIdle;
 			this.selected = false;
-
 		}
 	}
 
@@ -80,9 +84,10 @@ public class Tile : MonoBehaviour {
 	 * Mouse down, covers selecting of a tile
 	 */
 	void OnMouseDown(){
-		Debug.Log ("Tile " + id + " has been clicked");
+		//Debug.Log ("Tile " + id + " has been clicked");
 		if (!matched || !selected) {
 			this.selected = true;
+			Debug.Log ("Tile " + id + " has been selected correctly");
 			parent.notify (this);
 		}
 	}
@@ -101,8 +106,8 @@ public class Tile : MonoBehaviour {
 	 */ 
 	public void match(){
 		this.matched = true;
-		gameObject.GetComponent<Renderer> ().material = materialMatched;
-		displayText.GetComponent<Renderer> ().enabled = true;
+//		gameObject.GetComponent<Renderer> ().material = materialMatched;
+//		displayText.GetComponent<Renderer> ().enabled = true;
 	}
 
 	public void select(){
