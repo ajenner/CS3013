@@ -85,7 +85,7 @@ public class Tile : MonoBehaviour {
 	 */
 	void OnMouseDown(){
 		//Debug.Log ("Tile " + id + " has been clicked");
-		if (!matched || !selected) {
+		if (!matched && !selected) {
 			this.selected = true;
 			Debug.Log ("Tile " + id + " has been selected correctly");
 			parent.notify (this);
