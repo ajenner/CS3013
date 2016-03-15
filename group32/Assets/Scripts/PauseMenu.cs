@@ -138,9 +138,9 @@ public class PauseMenu : MonoBehaviour
 			case Page.Credits:
 				ShowCredits(); 
 				break;
-//			case Page.ReturnToLobby:
-//				ReturnToLobby ();
-//				break;
+			case Page.ReturnToLobby:
+				ReturnToLobby ();
+				break;
 			}
 		}   
 	}
@@ -199,10 +199,10 @@ public class PauseMenu : MonoBehaviour
 		GUILayout.Label("Render Textures: "+SystemInfo.supportsRenderTextures);
 	}
 
-//	void ReturnToLobby(){
-//		BeginPage(300,300);
-//		SceneManager.LoadScene ("Lobby");
-//	}
+	void ReturnToLobby(){
+		BeginPage(300,300);
+		SceneManager.LoadScene ("3dMenu");
+	}
 
 	void Qualities() {
 		switch (QualitySettings.GetQualityLevel()) 
@@ -308,9 +308,9 @@ public class PauseMenu : MonoBehaviour
 		if (GUILayout.Button ("Credits")) {
 			currentPage = Page.Credits;
 		}
-//		if (GUILayout.Button ("Return To Lobby")) {
-//			ReturnToLobby ();
-//		}
+		if (GUILayout.Button ("Return To Lobby")) {
+			ReturnToLobby ();
+		}
 		if (IsBrowser() && !IsBeginning() && GUILayout.Button ("Restart")) {
 			Application.OpenURL(url);
 		}
