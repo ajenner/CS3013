@@ -30,7 +30,7 @@ public class Tile : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (this.selected) {
-			Debug.Log ("Trying to change colour of " + id);
+		//	Debug.Log ("Trying to change colour of " + id);
 			gameObject.GetComponent<Renderer> ().material = materialMatched;
 			displayText.GetComponent<Renderer> ().enabled = true;
 		} else if (this.matched) {
@@ -69,13 +69,13 @@ public class Tile : MonoBehaviour {
 	 * Mouse over functions. Covers highligting
 	 */
 	void OnMouseOver(){
-		if (!matched || !selected) {
+		if (!matched && !selected) {
 			gameObject.GetComponent<Renderer> ().material = materialLightUp;
 		}
 	}
 	 
 	void OnMouseExit(){
-		if (!matched || !selected) {
+		if (!matched && !selected) {
 			gameObject.GetComponent<Renderer> ().material = materialIdle;
 		}
 	}
@@ -85,9 +85,10 @@ public class Tile : MonoBehaviour {
 	 */
 	void OnMouseDown(){
 		//Debug.Log ("Tile " + id + " has been clicked");
-		if (!matched && !selected) {
+		Debug.Log (parent.inputEnable());
+		if ((!matched && !selected) && parent.inputEnable() == true) {
 			this.selected = true;
-			Debug.Log ("Tile " + id + " has been selected correctly");
+		//	Debug.Log ("Tile " + id + " has been selected correctly");
 			parent.notify (this);
 		}
 	}
