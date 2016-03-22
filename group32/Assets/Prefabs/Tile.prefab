@@ -180,7 +180,7 @@ MonoBehaviour:
   displayText: {fileID: 10270722}
   materialIdle: {fileID: 2100000, guid: 198a6c0c68a084d4a856df852f35846a, type: 2}
   materialLightUp: {fileID: 2100000, guid: 69eba6e948fd644838edff1b7e65b37a, type: 2}
-  materialMatched: {fileID: 2100000, guid: bdc3bd0accaa74621a82726c119d4cbd, type: 2}
+  materialMatched: {fileID: 2100000, guid: b3ce1b44c9857b04480ef0e2202c82e4, type: 2}
   occupied: 0
   selected: 0
   matched: 0
