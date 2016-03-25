@@ -41,7 +41,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 6
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_LightmapsMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -66,7 +66,8 @@ LightmapSettings:
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000001, guid: 6dedc30da833347798536d63e99542a9,
+    type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
 NavMeshSettings:
@@ -239,7 +240,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 449150, guid: 9020109f801ce4c718d343ba6c4f645b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.66
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 449150, guid: 9020109f801ce4c718d343ba6c4f645b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -275,7 +276,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11472754, guid: 9020109f801ce4c718d343ba6c4f645b, type: 2}
       propertyPath: distanceBetweenTiles
-      value: 2
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9020109f801ce4c718d343ba6c4f645b, type: 2}
@@ -558,8 +559,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1966723105}
-  m_LocalRotation: {x: 0.37091258, y: 0.090332724, z: -0.03627894, w: 0.92355174}
-  m_LocalPosition: {x: 4.266883, y: 7.0707808, z: -14.125843}
+  m_LocalRotation: {x: -0.44364217, y: 0.060947277, z: -0.030257588, w: -0.89361715}
+  m_LocalPosition: {x: 1.0189693, y: 1.0388323, z: -10.345895}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

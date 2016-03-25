@@ -17,6 +17,7 @@ var QuitButton : boolean = false;
          Application.Quit();
      }
      else{
+     	 SceneManager.UnloadScene("3dManu");
          SceneManager.LoadScene (levelToLoad);
      }
  }

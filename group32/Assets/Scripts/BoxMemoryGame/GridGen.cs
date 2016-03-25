@@ -4,6 +4,9 @@ using System.Collections;
 public class GridGen : MonoBehaviour {
 	public Tile tilePrefab;
 
+	bool isFirstPlayerTurn = true;
+	bool inEnable = true;
+
 	//Difficulty vars
 	public int width = 3;
 	public int height = 4;
@@ -17,10 +20,20 @@ public class GridGen : MonoBehaviour {
 	static ArrayList usedAssets;
 	static ArrayList tilesUnassigned;
 
+	//GameControl
+	Tile p1Selected;
+	Tile p2Selected;
+	int winCount;
+
 	// Use this for initialization
 	void Start () {
+		winCount = width * height;
 		if ((width * height) % 2 != 0) {
 			throw new System.InvalidOperationException ("Could not create game. Not an even number in the grid");
+		}
+
+		if ((width * height) / 2 > 30) {
+			throw new System.InvalidOperationException ("Too large. Max number of cubes is 30 (6 * 5)");
 		}
 		CreateAssets ();
 		CreateTiles ();
@@ -43,8 +56,11 @@ public class GridGen : MonoBehaviour {
 			for (int y = 0; y < height; y++) {
 				Tile newTile = (Tile)Instantiate (tilePrefab, new Vector3 (transform.position.x + xOffSet, transform.position.y, transform.position.z + zOffSet),
 					               transform.rotation);
+				//Set tile's parent
+				newTile.setParent (this);
 				grid [x, y] = newTile;
 				zOffSet += distanceBetweenTiles;
+
 			}
 		}
 		AssignPictures ();
@@ -94,7 +110,7 @@ public class GridGen : MonoBehaviour {
 					tilesUnassigned.Remove(tile2);
 
 					idNumber++;
-					Debug.Log ("Tile [" + randomX + "," + randomY + "] and tile [" + randomX2 + "," + randomY2 + "] are now paired"); 
+				//	Debug.Log ("Tile [" + randomX + "," + randomY + "] and tile [" + randomX2 + "," + randomY2 + "] are now paired"); 
 				} else {
 					//It's assigned already, move on
 					continue;
@@ -106,5 +122,56 @@ public class GridGen : MonoBehaviour {
 			}
 				
 		}
+	}
+
+	void OnGUI()
+	{
+		if (winCount == 0)
+			GUI.Label (new Rect (Screen.width/2.0f, Screen.height/2.0f, 500, 200), "WINNER!"); 
+		else
+			GUI.Label (new Rect (10, 10, 100, 100),
+				(inEnable) ? ((isFirstPlayerTurn) ? "Player 1's turn" : "Player 2's turn") :"");
+
+	}
+
+	public void notify(Tile tile){
+
+		//Debug.Log ("Notify was called " + isFirstPlayerTurn);
+		if (isFirstPlayerTurn) {
+			p1Selected = tile;
+		} else {
+			p2Selected = tile;
+			inEnable = false;
+
+			bool isMatch = p1Selected.checkPair (p2Selected);
+
+			if (isMatch) {
+				p1Selected.match ();
+				p2Selected.match ();
+				winCount -= 2;
+				inEnable = true;
+				//Debug.Log ("Matched! " + isMatch);
+			} else {
+				StartCoroutine(unSelectAfterDelay());
+				//Debug.Log ("No match! " + isMatch);
+			}
+		}
+		isFirstPlayerTurn = !isFirstPlayerTurn;
+	}
+
+	public bool inputEnable()
+	{
+		return this.inEnable;
+	}
+
+
+	IEnumerator unSelectAfterDelay(){
+		yield return new WaitForSeconds (0.2f);
+
+		Debug.Log ("Unselecting");
+		this.p2Selected.unSelect();
+		this.p1Selected.unSelect();
+		inEnable = true;
+		yield return null;
 	}
 }
