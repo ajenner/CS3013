@@ -6,24 +6,31 @@ public class GameManager : MonoBehaviour {
 	public Maze mazeFab;
 	private Maze myMaze;
 
+	public Player playerFab;
+	private Player myPlayer;
 	private void Start () {
-		BeginGame();
+		StartCoroutine (BeginGame());
 	}
 
 	private void Update () {
-		if (Input.GetKeyDown(KeyCode.Space)) {
+		if (Input.GetKeyDown(KeyCode.Backspace)) {
 			RestartGame();
 		}
 	}
 
-	private void BeginGame () {
+	private IEnumerator BeginGame () {
 		myMaze = Instantiate (mazeFab) as Maze;
-		StartCoroutine (myMaze.generate ());
+		yield return StartCoroutine (myMaze.generate ());
+		myPlayer = Instantiate (playerFab) as Player;
+		myPlayer.SetLocation (myMaze.getCell (myMaze.RandomCoord));
 	}
 
 	private void RestartGame () {
 		Destroy(myMaze.gameObject);
 		StopAllCoroutines ();
-		BeginGame ();
+		if (myPlayer != null) {
+			Destroy (myPlayer.gameObject);
+		}
+		StartCoroutine (BeginGame());
 	}
 }
