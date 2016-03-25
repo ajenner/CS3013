@@ -97,6 +97,7 @@ GameObject:
   - 92: {fileID: 368346069}
   - 124: {fileID: 368346068}
   - 81: {fileID: 368346067}
+  - 114: {fileID: 368346072}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -171,6 +172,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &368346072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 368346066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2efb3389134f4730b05991ede6daf38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skin: {fileID: 0}
+  mat: {fileID: 0}
+  lowFPSColor: {r: 1, g: 0, b: 0, a: 1}
+  highFPSColor: {r: 0, g: 1, b: 0, a: 1}
+  lowFPS: 30
+  highFPS: 50
+  start: {fileID: 0}
+  url: unity.html
+  statColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  credits:
+  - Group 32
+  - CS2013 Software Engineering Project
+  - Trinity College, Dublin
+  crediticons: []
 --- !u!1 &482360876
 GameObject:
   m_ObjectHideFlags: 0
