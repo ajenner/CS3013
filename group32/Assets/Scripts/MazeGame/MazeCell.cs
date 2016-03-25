@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class MazeCell : MonoBehaviour {
+	public IntVector2 coord;
 	// Use this for initialization
 	void Start () {
 	

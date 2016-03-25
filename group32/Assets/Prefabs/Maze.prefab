@@ -39,9 +39,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9053195642c78cc4ba208c18a8aafd87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeX: 20
-  sizeZ: 20
   cellFab: {fileID: 11449708, guid: b9cc7582129085f40b5a35b71ad9f5fb, type: 2}
+  size:
+    x: 20
+    z: 20
   generateDelay: 0.01
 --- !u!1001 &100100000
 Prefab:
@@ -66,6 +67,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: generateDelay
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: size.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: size.z
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
