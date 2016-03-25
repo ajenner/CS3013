@@ -23,7 +23,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141614}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.66, z: -10}
+  m_LocalPosition: {x: 0, y: 0.1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,7 +42,7 @@ MonoBehaviour:
   tilePrefab: {fileID: 11479696, guid: 40872adf6ef6b4e02a71a4b8659463e8, type: 2}
   width: 5
   height: 4
-  distanceBetweenTiles: 1.5
+  distanceBetweenTiles: 0.3
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
