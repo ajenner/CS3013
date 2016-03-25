@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Maze : MonoBehaviour {
 	public MazeCell cellFab;
@@ -25,31 +26,41 @@ public class Maze : MonoBehaviour {
 	public IEnumerator generate(){
 		WaitForSeconds delay = new WaitForSeconds (generateDelay);
 		cells = new MazeCell[size.x, size.z];
-		/*Lineral Cell generation*/
-//		for (int x = 0; x < size.x; x++) {
-//			for (int z = 0; z < size.z; z++) {
-//				yield return delay;
-//				createCell (new IntVector2(x, z));
-//			}
-//		}
-
-		/*Random Cell Generation*/
-		IntVector2 coord = RandomCoord;
-		while (ContainsCoord (coord) && getCell(coord) == null) {
+		List<MazeCell> activeCells = new List<MazeCell>();
+		DoFirstGenerationStep (activeCells);
+		while (activeCells.Count > 0) {
 			yield return delay;
-			createCell(coord);
-			//Extension methods allow this to work, so nice
-			coord += MazeDirections.RandomDirection.ToIntVector2();
+			DoNextGenerationStep (activeCells);
 		}
-
 	}
 
-	private void createCell(IntVector2 coord){
+	private void DoFirstGenerationStep(List<MazeCell> activeCells){
+		activeCells.Add (CreateCell (RandomCoord));
+	}
+
+	private void DoNextGenerationStep(List<MazeCell> activeCells){
+		int currentIndex = activeCells.Count - 1;
+		MazeCell currentCell = activeCells [currentIndex];
+		MazeDirection direction = MazeDirections.RandomDirection;
+		IntVector2 coords = currentCell.coordinates + direction.ToIntVector2 ();
+
+		if (ContainsCoord (coords) && getCell (coords) == null) {
+			activeCells.Add (CreateCell (coords));
+			coords += MazeDirections.RandomDirection.ToIntVector2 ();
+		} else {
+			//backtrack
+			activeCells.RemoveAt(currentIndex);
+		}
+	}
+
+	private MazeCell CreateCell (IntVector2 coordinates) {
 		MazeCell newCell = Instantiate(cellFab) as MazeCell;
-		cells [coord.x, coord.z] = newCell;
-		newCell.name = "Maze Cell " + coord.x + ", " + coord.z;
+		cells[coordinates.x, coordinates.z] = newCell;
+		newCell.coordinates = coordinates;
+		newCell.name = "Maze Cell " + coordinates.x + ", " + coordinates.z;
 		newCell.transform.parent = transform;
-		newCell.transform.localPosition = new Vector3 (coord.x - size.x * 0.5f + 0.5f, 0f, coord.z - size.z * 0.5f + 0.5f);
+		newCell.transform.localPosition = new Vector3(coordinates.x - size.x * 0.5f + 0.5f, 0f, coordinates.z - size.z * 0.5f + 0.5f);
+		return newCell;
 	}
 
 	public IntVector2 RandomCoord{
