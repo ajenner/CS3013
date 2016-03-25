@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player : MonoBehaviour {
+public class Player2 : MonoBehaviour {
 	public MazeCell currentCell;
-	public Player2 otherPlayer;
+	public Player otherPlayer;
+
 	public void SetLocation(MazeCell cell){
 		currentCell = cell;
 		transform.localPosition = cell.transform.localPosition;
@@ -18,32 +19,18 @@ public class Player : MonoBehaviour {
 	}
 
 	void Update (){
-		if (checkWin ()) {
-			Debug.Log ("Winner winner chicken dinner");
-		}
-
-		if (Input.GetKeyDown (KeyCode.W)) {
+		if (Input.GetKeyDown (KeyCode.UpArrow)) {
 			//Debug.Log ("North");
 			Move (MazeDirection.North);
-		} else if (Input.GetKeyDown (KeyCode.D)) {
+		} else if (Input.GetKeyDown (KeyCode.RightArrow)) {
 			//Debug.Log ("East");
 			Move (MazeDirection.East);
-		} else if (Input.GetKeyDown (KeyCode.A)) {
+		} else if (Input.GetKeyDown (KeyCode.LeftArrow)) {
 			//Debug.Log ("West");
 			Move (MazeDirection.West);
-		} else if (Input.GetKeyDown (KeyCode.S)) {
+		} else if (Input.GetKeyDown (KeyCode.DownArrow)) {
 			//Debug.Log ("South");
 			Move (MazeDirection.South);
 		}
-	}
-
-	private bool checkWin(){
-		if (otherPlayer == null) {
-			return false;
-		}
-		if(this.currentCell == otherPlayer.currentCell) {
-			return true;
-		}
-		return false;
 	}
 }
