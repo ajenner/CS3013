@@ -43,16 +43,12 @@ public class Maze : MonoBehaviour {
 	private void DoNextGenerationStep(List<MazeCell> activeCells){
 		int currentIndex = activeCells.Count - 1;
 		MazeCell currentCell = activeCells [currentIndex];
-		MazeDirection direction = MazeDirections.RandomDirection;
+		if (currentCell.IsFullyInitialized) {
+			activeCells.RemoveAt (currentIndex);
+			return;
+		}
+		MazeDirection direction = currentCell.RandomUninitializedDirection;
 		IntVector2 coords = currentCell.coordinates + direction.ToIntVector2 ();
-
-//		if (ContainsCoord (coords) && getCell (coords) == null) {
-//			activeCells.Add (CreateCell (coords));
-//			coords += MazeDirections.RandomDirection.ToIntVector2 ();
-//		} else {
-//			//backtrack
-//			activeCells.RemoveAt(currentIndex);
-//		}
 		if (ContainsCoord (coords)) {
 			MazeCell neighbour = getCell (coords);
 			if (neighbour == null) {
@@ -61,11 +57,11 @@ public class Maze : MonoBehaviour {
 				activeCells.Add (neighbour);
 			} else {
 				CreateWall (currentCell, neighbour, direction);
-				activeCells.RemoveAt (currentIndex);
+				//activeCells.RemoveAt (currentIndex);
 			}
 		} else {
 			CreateWall (currentCell, null, direction);
-			activeCells.RemoveAt (currentIndex);
+			//activeCells.RemoveAt (currentIndex);
 		}
 	}
 
