@@ -16,18 +16,23 @@ public class Player : MonoBehaviour {
 	private void Move(MazeDirection direction){
 		MazeCellEdge edge = currentCell.GetEdge (direction);
 		if (edge is MazePassage) {
+			Debug.Log ("Is this working?");
 			SetLocation (edge.otherCell);
 		}
 	}
 
-	private void Update(){
+	void Update (){
 		if (Input.GetKeyDown (KeyCode.UpArrow)) {
+			Debug.Log ("North");
 			Move (MazeDirection.North);
 		} else if (Input.GetKeyDown (KeyCode.RightArrow)) {
+			Debug.Log ("East");
 			Move (MazeDirection.East);
 		} else if (Input.GetKeyDown (KeyCode.LeftArrow)) {
+			Debug.Log ("West");
 			Move (MazeDirection.West);
 		} else if (Input.GetKeyDown (KeyCode.DownArrow)) {
+			Debug.Log ("South");
 			Move (MazeDirection.South);
 		}
 	}
