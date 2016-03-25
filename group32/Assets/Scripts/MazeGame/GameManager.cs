@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour {
 		if (myPlayer != null) {
 			Destroy (myPlayer.gameObject);
 		}
+		if (myPlayer2 != null) {
+			Destroy (myPlayer2.gameObject);
+		}
 		StartCoroutine (BeginGame());
 	}
 }
