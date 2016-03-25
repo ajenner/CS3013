@@ -11,12 +11,12 @@ public abstract class MazeCellEdge : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
 	public void Initialize(MazeCell cell, MazeCell otherCell, MazeDirection direction){
 		this.cell = cell;
-		this.otherCell = cell;
+		this.otherCell = otherCell;
 		this.direction = direction;
 		cell.SetEdge (direction, this);
 		transform.parent = cell.transform;

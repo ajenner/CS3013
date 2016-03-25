@@ -3,10 +3,6 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 	private MazeCell currentCell;
-	// Use this for initialization
-	void Start () {
-	
-	}
 
 	public void SetLocation(MazeCell cell){
 		currentCell = cell;
@@ -14,24 +10,24 @@ public class Player : MonoBehaviour {
 	}
 
 	private void Move(MazeDirection direction){
+		//Debug.Log (currentCell.coordinates.x + ", " + currentCell.coordinates.z);
 		MazeCellEdge edge = currentCell.GetEdge (direction);
 		if (edge is MazePassage) {
-			Debug.Log ("Is this working?");
 			SetLocation (edge.otherCell);
 		}
 	}
 
 	void Update (){
-		if (Input.GetKeyDown (KeyCode.UpArrow)) {
+		if (Input.GetKeyDown (KeyCode.W)) {
 			Debug.Log ("North");
 			Move (MazeDirection.North);
-		} else if (Input.GetKeyDown (KeyCode.RightArrow)) {
+		} else if (Input.GetKeyDown (KeyCode.D)) {
 			Debug.Log ("East");
 			Move (MazeDirection.East);
-		} else if (Input.GetKeyDown (KeyCode.LeftArrow)) {
+		} else if (Input.GetKeyDown (KeyCode.A)) {
 			Debug.Log ("West");
 			Move (MazeDirection.West);
-		} else if (Input.GetKeyDown (KeyCode.DownArrow)) {
+		} else if (Input.GetKeyDown (KeyCode.S)) {
 			Debug.Log ("South");
 			Move (MazeDirection.South);
 		}
