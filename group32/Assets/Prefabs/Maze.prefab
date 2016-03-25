@@ -43,6 +43,8 @@ MonoBehaviour:
   size:
     x: 20
     z: 20
+  passageFab: {fileID: 11473060, guid: 6c9ff321c237e9b4da770cd0b01bf01b, type: 2}
+  wallFab: {fileID: 11495962, guid: 76c71b3140fcc2043890155c36df28b0, type: 2}
   generateDelay: 0.01
 --- !u!1001 &100100000
 Prefab:

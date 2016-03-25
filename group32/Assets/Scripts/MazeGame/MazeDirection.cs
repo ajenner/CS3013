@@ -33,4 +33,16 @@ public static class MazeDirections {
 	public static IntVector2 ToIntVector2 (this MazeDirection direction){
 		return vectors [(int)direction];
 	}
+
+	private static MazeDirection[] opposites = {
+		MazeDirection.South,
+		MazeDirection.West,
+		MazeDirection.North,
+		MazeDirection.East
+	};
+
+	public static MazeDirection GetOpposite(this MazeDirection direction){
+		return opposites [(int)direction];
+	}
+		
 }

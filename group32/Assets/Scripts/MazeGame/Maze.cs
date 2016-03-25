@@ -6,6 +6,8 @@ public class Maze : MonoBehaviour {
 	public MazeCell cellFab;
 	public IntVector2 size;
 	private MazeCell[,] cells;
+	public MazePassage passageFab;
+	public MazeWall wallFab;
 
 	public float generateDelay;
 
@@ -44,12 +46,26 @@ public class Maze : MonoBehaviour {
 		MazeDirection direction = MazeDirections.RandomDirection;
 		IntVector2 coords = currentCell.coordinates + direction.ToIntVector2 ();
 
-		if (ContainsCoord (coords) && getCell (coords) == null) {
-			activeCells.Add (CreateCell (coords));
-			coords += MazeDirections.RandomDirection.ToIntVector2 ();
+//		if (ContainsCoord (coords) && getCell (coords) == null) {
+//			activeCells.Add (CreateCell (coords));
+//			coords += MazeDirections.RandomDirection.ToIntVector2 ();
+//		} else {
+//			//backtrack
+//			activeCells.RemoveAt(currentIndex);
+//		}
+		if (ContainsCoord (coords)) {
+			MazeCell neighbour = getCell (coords);
+			if (neighbour == null) {
+				neighbour = CreateCell (coords);
+				CreatePassage (currentCell, neighbour, direction);
+				activeCells.Add (neighbour);
+			} else {
+				CreateWall (currentCell, neighbour, direction);
+				activeCells.RemoveAt (currentIndex);
+			}
 		} else {
-			//backtrack
-			activeCells.RemoveAt(currentIndex);
+			CreateWall (currentCell, null, direction);
+			activeCells.RemoveAt (currentIndex);
 		}
 	}
 
@@ -61,6 +77,22 @@ public class Maze : MonoBehaviour {
 		newCell.transform.parent = transform;
 		newCell.transform.localPosition = new Vector3(coordinates.x - size.x * 0.5f + 0.5f, 0f, coordinates.z - size.z * 0.5f + 0.5f);
 		return newCell;
+	}
+
+	private void CreatePassage(MazeCell cell, MazeCell otherCell, MazeDirection direction){
+		MazePassage passage = Instantiate (passageFab) as MazePassage;
+		passage.Initialize (cell, otherCell, direction);
+		passage = Instantiate (passageFab) as MazePassage;
+		passage.Initialize(otherCell, cell, direction.GetOpposite());
+	}
+
+	private void CreateWall(MazeCell cell, MazeCell otherCell, MazeDirection direction){
+		MazeWall wall = Instantiate (wallFab) as MazeWall;
+		wall.Initialize (cell, otherCell, direction);
+		if(otherCell != null){
+			wall = Instantiate (wallFab) as MazeWall;
+			wall.Initialize (otherCell, cell, direction.GetOpposite ());
+		}
 	}
 
 	public IntVector2 RandomCoord{
