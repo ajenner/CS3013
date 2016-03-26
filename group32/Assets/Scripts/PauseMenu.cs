@@ -40,7 +40,7 @@ public class PauseMenu : MonoBehaviour
 	public Texture[] crediticons;
 
 	public enum Page {
-		None,Main,Options,Credits,ReturnToLobby
+		None,Main,Options,Credits,ReturnToLobby,Restart
 	}
 
 	private Page currentPage;
@@ -141,6 +141,9 @@ public class PauseMenu : MonoBehaviour
 			case Page.ReturnToLobby:
 				ReturnToLobby ();
 				break;
+			case Page.Restart:
+				Restart();
+				break;
 			}
 		}   
 	}
@@ -202,6 +205,14 @@ public class PauseMenu : MonoBehaviour
 	void ReturnToLobby(){
 		BeginPage(300,300);
 		SceneManager.LoadScene ("3dMenu");
+	}
+
+	void Restart(){
+		BeginPage(300,300);
+		Scene current = SceneManager.GetActiveScene ();
+		string currentScene = current.name;
+		//SceneManager.UnloadScene (currentScene);
+		SceneManager.LoadScene (currentScene);
 	}
 
 	void Qualities() {
@@ -310,6 +321,9 @@ public class PauseMenu : MonoBehaviour
 		}
 		if (GUILayout.Button ("Return To Lobby")) {
 			ReturnToLobby ();
+		}
+		if (GUILayout.Button ("Restart")) {
+			Restart ();
 		}
 		if (IsBrowser() && !IsBeginning() && GUILayout.Button ("Restart")) {
 			Application.OpenURL(url);
