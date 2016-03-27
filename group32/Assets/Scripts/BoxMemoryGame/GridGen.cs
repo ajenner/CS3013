@@ -25,9 +25,6 @@ public class GridGen : MonoBehaviour {
 	Tile p2Selected;
 	int winCount;
 
-	//GUI Stuff
-	//private GUIStyle style = new GUIStyle();
-
 	// Use this for initialization
 	void Start () {
 		winCount = width * height;
@@ -129,18 +126,11 @@ public class GridGen : MonoBehaviour {
 
 	void OnGUI()
 	{
-		//Set the GUIStyle style to be label
-		GUIStyle style = GUI.skin.GetStyle ("label");
-
-		//Set the style font size to increase and decrease over time
-		//style.fontSize = (int)(40.0f + 30.0f * Mathf.Sin (Time.time));
-		style.fontSize = (int)(40.0f + 30.0f);
-
 		if (winCount == 0)
-			GUI.Label (new Rect (Screen.width/2.0f, Screen.height/2.0f, 500, 200), "WINNER!", style); 
+			GUI.Label (new Rect (Screen.width/2.0f, Screen.height/2.0f, 500, 200), "WINNER!"); 
 		else
-			GUI.Label (new Rect (10, 10, 500, 500),
-				(inEnable) ? ((isFirstPlayerTurn) ? "Player 1's turn" : "Player 2's turn") :"",  style);
+			GUI.Label (new Rect (10, 10, 100, 100),
+				(inEnable) ? ((isFirstPlayerTurn) ? "Player 1's turn" : "Player 2's turn") :"");
 
 	}
 
