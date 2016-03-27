@@ -126,13 +126,35 @@ public class GridGen : MonoBehaviour {
 
 	void OnGUI()
 	{
-		if (winCount == 0)
-			GUI.Label (new Rect (Screen.width/2.0f, Screen.height/2.0f, 500, 200), "WINNER!"); 
-		else
-			GUI.Label (new Rect (10, 10, 100, 100),
-				(inEnable) ? ((isFirstPlayerTurn) ? "Player 1's turn" : "Player 2's turn") :"");
+        GUIStyle style = new GUIStyle();
+        style.normal.textColor = Color.yellow;
+        GUI.Button(new Rect(Screen.width - 90, Screen.height - 50, 70, 20), "Menu");
+        if (winCount == 0)
+        {
+            style.fontSize = 60;
+            style.normal.textColor = Color.yellow;
+            style.fontStyle = FontStyle.Bold;
+            GUI.Label(new Rect((Screen.width / 2.0f) - (.095f * (Screen.width)), 100, 500, 200), "WINNER!", style);
+            style.fontSize = 15;
+            GUI.Label(new Rect((Screen.width / 2.0f) - (.11f * (Screen.width)), 160, 500, 200), "Press menu to play again or return to the lobby...", style);
+            style.fontStyle = FontStyle.Normal;
+        }
+        else
+        {
+            style.fontSize = 30;
+            if (isFirstPlayerTurn)
+            {
+                style.normal.textColor = Color.red;
+                GUI.Label(new Rect(10, 10, 100, 100), "Player 1's turn", style);
+            }
+            else
+            {
+                style.normal.textColor = Color.blue;
+                GUI.Label(new Rect(Screen.width - 210, 10, 100, 100), "Player 2's turn", style);
+            }
 
-	}
+        }
+    }
 
 	public void notify(Tile tile){
 

@@ -99,9 +99,9 @@ public class PauseMenu : MonoBehaviour
 		if (showfps || showfpsgraph) {
 			FPSUpdate();
 		}
-
-		if (Input.GetKeyDown("escape")) 
-		{
+        Rect bounds = new Rect(Screen.width - 90, 30, 70, 20);
+        if (Input.GetMouseButtonDown(0) && bounds.Contains(Input.mousePosition))
+        {
 			switch (currentPage) 
 			{
 			case Page.None: 

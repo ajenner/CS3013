@@ -46,4 +46,11 @@ public class GameManager : MonoBehaviour {
 		}
 		StartCoroutine (BeginGame());
 	}
+
+    void OnGUI()
+    {
+        GUIStyle style = new GUIStyle();
+        style.normal.textColor = Color.yellow;
+        GUI.Button(new Rect(Screen.width - 90, Screen.height - 50, 70, 20), "Options");
+    }
 }
