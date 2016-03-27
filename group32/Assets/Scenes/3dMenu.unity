@@ -257,6 +257,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 420880437}
   - 82: {fileID: 420880436}
+  - 114: {fileID: 420880438}
   m_Layer: 0
   m_Name: BackgroundMusic
   m_TagString: Untagged
@@ -326,7 +327,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -345,11 +346,22 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 420880435}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 211, y: 164.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
+--- !u!114 &420880438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 420880435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2da84e1745e745bfa06520bba730039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &503537518
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,7 +708,7 @@ RectTransform:
   - {fileID: 1589779265}
   - {fileID: 934943386}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -852,7 +864,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 402828, guid: 2b55aa37fd79a4d4dafce35a98b2fd5c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.951246
+      value: 10.07
       objectReference: {fileID: 0}
     - target: {fileID: 402828, guid: 2b55aa37fd79a4d4dafce35a98b2fd5c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -860,7 +872,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 402828, guid: 2b55aa37fd79a4d4dafce35a98b2fd5c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.342562
+      value: 4.57
       objectReference: {fileID: 0}
     - target: {fileID: 402828, guid: 2b55aa37fd79a4d4dafce35a98b2fd5c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -884,15 +896,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 402828, guid: 2b55aa37fd79a4d4dafce35a98b2fd5c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.01
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: 402828, guid: 2b55aa37fd79a4d4dafce35a98b2fd5c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.01
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: 402828, guid: 2b55aa37fd79a4d4dafce35a98b2fd5c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.01
+      value: 0.005
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b55aa37fd79a4d4dafce35a98b2fd5c, type: 3}

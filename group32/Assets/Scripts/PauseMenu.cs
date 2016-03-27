@@ -204,6 +204,9 @@ public class PauseMenu : MonoBehaviour
 
 	void ReturnToLobby(){
 		BeginPage(300,300);
+		UnPauseGame ();
+		AudioSource s = GetComponent<AudioSource>();
+		Destroy (s);
 		SceneManager.LoadScene ("3dMenu");
 	}
 
@@ -212,6 +215,7 @@ public class PauseMenu : MonoBehaviour
 		Scene current = SceneManager.GetActiveScene ();
 		string currentScene = current.name;
 		//SceneManager.UnloadScene (currentScene);
+		UnPauseGame();
 		SceneManager.LoadScene (currentScene);
 	}
 
@@ -353,14 +357,14 @@ public class PauseMenu : MonoBehaviour
 	void PauseGame() {
 		savedTimeScale = Time.timeScale;
 		Time.timeScale = 0;
-		AudioListener.pause = true;
+		//AudioListener.pause = true;
 
 		currentPage = Page.Main;
 	}
 
 	void UnPauseGame() {
 		Time.timeScale = savedTimeScale;
-		AudioListener.pause = false;
+		//AudioListener.pause = false;
 		currentPage = Page.None;
 
 		if (IsBeginning() && start != null) {
@@ -374,7 +378,7 @@ public class PauseMenu : MonoBehaviour
 
 	void OnApplicationPause(bool pause) {
 		if (IsGamePaused()) {
-			AudioListener.pause = true;
+			//AudioListener.pause = true;
 		}
 	}
 }
