@@ -18,9 +18,9 @@ public class Player : MonoBehaviour {
 	}
 
 	void Update (){
-		if (checkWin ()) {
-			Debug.Log ("Winner winner chicken dinner");
-		}
+//		if (checkWin ()) {
+//			Debug.Log ("Winner winner chicken dinner");
+//		}
 
 		if (Input.GetKeyDown (KeyCode.W)) {
 			//Debug.Log ("North");

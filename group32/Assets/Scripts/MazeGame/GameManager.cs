@@ -20,6 +20,15 @@ public class GameManager : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Backspace)) {
 			RestartGame();
 		}
+
+		//Check for win
+		if (myPlayer == null || myPlayer2 == null) {
+			return;
+		}
+		if(myPlayer.currentCell == myPlayer2.currentCell) {
+			Debug.Log ("You win");
+		}
+		return;
 	}
 
 	private IEnumerator BeginGame () {
