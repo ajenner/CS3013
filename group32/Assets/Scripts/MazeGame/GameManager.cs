@@ -12,7 +12,10 @@ public class GameManager : MonoBehaviour {
 	public Player2 player2Fab;
 	private Player2 myPlayer2;
 
+	bool win;
+
 	private void Start () {
+		win = false;
 		StartCoroutine (BeginGame());
 	}
 
@@ -26,7 +29,7 @@ public class GameManager : MonoBehaviour {
 			return;
 		}
 		if(myPlayer.currentCell == myPlayer2.currentCell) {
-			Debug.Log ("You win");
+			win = true;
 		}
 		return;
 	}
@@ -45,6 +48,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void RestartGame () {
+		win = false;
 		Destroy(myMaze.gameObject);
 		StopAllCoroutines ();
 		if (myPlayer != null) {
@@ -56,10 +60,19 @@ public class GameManager : MonoBehaviour {
 		StartCoroutine (BeginGame());
 	}
 
-    void OnGUI()
-    {
+    void OnGUI() {
         GUIStyle style = new GUIStyle();
         style.normal.textColor = Color.yellow;
         GUI.Button(new Rect(Screen.width - 90, Screen.height - 50, 70, 20), "Options");
+
+		if (win) {
+			style.fontSize = 60;
+			style.normal.textColor = Color.yellow;
+			style.fontStyle = FontStyle.Bold;
+			GUI.Label(new Rect((Screen.width / 2.0f) - (.095f * (Screen.width)), 100, 500, 200), "WINNER!", style);
+			style.fontSize = 15;
+			GUI.Label(new Rect((Screen.width / 2.0f) - (.11f * (Screen.width)), 160, 500, 200), "Press menu to play again or return to the lobby...", style);
+			style.fontStyle = FontStyle.Normal;
+		}
     }
 }

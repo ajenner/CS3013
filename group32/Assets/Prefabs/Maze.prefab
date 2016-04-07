@@ -41,7 +41,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellFab: {fileID: 11449708, guid: b9cc7582129085f40b5a35b71ad9f5fb, type: 2}
   size:
-    x: 5
+    x: 10
     z: 5
   passageFab: {fileID: 11473060, guid: 6c9ff321c237e9b4da770cd0b01bf01b, type: 2}
   wallFab: {fileID: 11495962, guid: 76c71b3140fcc2043890155c36df28b0, type: 2}
@@ -72,7 +72,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: size.x
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: size.z
